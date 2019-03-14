@@ -8,7 +8,7 @@
 
    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-   <link rel="stylesheet" href="/Content/bootstrap.min.css"  runat="server"/>
+   <link rel="stylesheet" href="Content/bootstrap.min.css"  runat="server"/>
 
    <script src="bootstrap.min.js"></script>
 
