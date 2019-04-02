@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminPage.aspx.cs" Inherits="bank.adminPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="contact.aspx.cs" Inherits="bank.contact" %>
 
 <!DOCTYPE html>
 
@@ -34,11 +34,15 @@
   </ul>
 
         <div class="auto-style1" style="margin: 20px; padding: 50px; background-color: #FFFFFF; ">
-            <asp:Label ID="Label1" runat="server" Font-Names="Century Gothic" Font-Size="XX-Large" ForeColor="#666666" Text="Welcome Admin!"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Names="Century Gothic" Font-Size="XX-Large" ForeColor="#666666" Text="Contact"></asp:Label>
             <br />
-            <asp:Label ID="Label2" runat="server" Text="Users:" Font-Size="Large" ForeColor="#666666"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Customer service representatives are standing by! " Font-Size="Large" ForeColor="#666666"></asp:Label>
+            &nbsp;
             <br />
+            <asp:Label ID="Label3" runat="server" Text="Call us 24/7: 1-800-959-3611 " Font-Size="Large" ForeColor="#666666"></asp:Label>
             <br />
+            <asp:Label ID="Label4" runat="server" Text="Visit us on  " Font-Size="Large" ForeColor="#666666"></asp:Label>
+            <asp:LinkButton ID="LinkButton1" runat="server">FaceBook</asp:LinkButton>
             <br />
             <br />
             <br />
@@ -49,5 +53,4 @@
     </form>
 
     </body>
-
 </html>

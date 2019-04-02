@@ -31,11 +31,10 @@
 <body>
     <form id="form1" runat="server">
     <ul class = "nav">
-	<li><a href = "index.html">Home</a></li>
-	<li><a href = "sports.html">About</a></li>
-	<li><a href = "music.html">Members</a></li>
-    <li><a href = "school.html">Careers</a></li>
-	<li><a href = "california.html">Contact</a></li>
+	<li><a href = "homePage.aspx">Home</a></li>
+	<li><a href = "about.aspx">About</a></li>
+	<li><a href = "Careers.aspx">Careers</a></li>
+	<li><a href = "contact.aspx">Contact</a></li>
 		
   
   </ul>

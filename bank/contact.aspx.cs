@@ -7,18 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace bank
 {
-    public partial class homePage : System.Web.UI.Page
+    public partial class contact : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/memberAccount.aspx");
-        }
-
-        
     }
 }
