@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homePage.aspx.cs" Inherits="bank.homePage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homePage.aspx.cs" UnobtrusiveValidationMode="none" Inherits="bank.homePage" %>
 
 <!DOCTYPE html>
 
@@ -20,11 +20,14 @@
             height: 376px;
             margin-left: 67px;
         }
-        .auto-style2 {
-            margin-left: 497px;
-        }
         .auto-style3 {
             margin-left: 496px;
+        }
+        .auto-style4 {
+            margin-left: 0px;
+        }
+        .auto-style5 {
+            margin-left: 2px;
         }
     </style>
 </head>
@@ -45,13 +48,21 @@
             <asp:Label ID="Label2" runat="server" Text="The Bank is the best place for all your online banking needs. Our representatives are standing by to assist you every step of the way! Please login or sign up to become a member today!" Font-Size="Large" ForeColor="#666666"></asp:Label>
             <br />
             <br />
-            <asp:TextBox ID="TextBox1" runat="server" BorderStyle="Ridge" CssClass="auto-style2" Font-Names="Century Gothic" ForeColor="#CCCCCC" Width="314px">username</asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label3" runat="server" ForeColor="#666666" Text="username"></asp:Label>
+            <asp:TextBox ID="usernameBox" runat="server" BorderStyle="Ridge" CssClass="auto-style5" Font-Names="Century Gothic" ForeColor="#CCCCCC" Width="314px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="usernameValidator1" runat="server" ControlToValidate="usernameBox" Display="Dynamic" ErrorMessage="RequiredFieldValidator">*username is required</asp:RequiredFieldValidator>
+            <asp:Label ID="invalidUserLabel" runat="server" ForeColor="Red" Text="*Invalid username/password"></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox2" runat="server" BorderStyle="Ridge" CssClass="auto-style2" Font-Names="Century Gothic" ForeColor="#CCCCCC" Width="314px">password</asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label4" runat="server" ForeColor="#666666" Text="password"></asp:Label>
+&nbsp;<asp:TextBox ID="passwordBox" runat="server" BorderStyle="Ridge" CssClass="auto-style4" Font-Names="Century Gothic" ForeColor="#CCCCCC" Width="314px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="psswordValidator" runat="server" ControlToValidate="passwordBox" ErrorMessage="RequiredFieldValidator" Display="Dynamic">*password is required</asp:RequiredFieldValidator>
             <br />
             <asp:Button ID="Button1" runat="server" BackColor="DeepSkyBlue" CssClass="auto-style3" Font-Names="Century Gothic" ForeColor="White" Height="40px" OnClick="Button1_Click" Text="login" Width="160px" />
             <br />
             <br />
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bankConnectionString %>" SelectCommand="SELECT * FROM [Members]"></asp:SqlDataSource>
             <br />
             <br />
         </div>
