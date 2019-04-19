@@ -10,7 +10,7 @@
 namespace bank {
     
     
-    public partial class homePage {
+    public partial class adminLogin {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace bank {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// adminButton control.
+        /// userButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton adminButton;
+        protected global::System.Web.UI.WebControls.LinkButton userButton;
         
         /// <summary>
         /// Label1 control.
@@ -38,15 +38,6 @@ namespace bank {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// Label3 control.

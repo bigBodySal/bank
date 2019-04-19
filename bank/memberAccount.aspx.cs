@@ -14,7 +14,7 @@ namespace bank
         protected void Page_Load(object sender, EventArgs e)
         {
             string username = (string)Session["username"];
-
+            transferFailedLabel.Visible = false;
             SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT Member_Fname FROM Members WHERE Member_Username = '" + username + "'", db);
             SqlCommand cmd1 = new SqlCommand("SELECT Member_CheckingTotal FROM Members WHERE Member_Username = '" + username + "'", db);
@@ -63,9 +63,18 @@ namespace bank
             decimal newBalanceChecking, newBalanceSaving;
             string username = (string)Session["username"];
 
+            //convert value from amount box from string to decimal then perform transfer within
             if (Decimal.TryParse(AmountBox.Text, out amount))
             {
                 //success
+
+
+                //if both lists contain same account name display message to user
+                if ((value1 == "SAVINGS" && value2 == "SAVINGS") || (value1 == "CHECKING" && value2 == "CHECKING"))
+                {
+                    transferFailedLabel.Visible = true;
+                    transferFailedLabel.Text = "To and From accounts must be specified";
+                }
 
 
                 //transfer to checkings from savings
@@ -74,7 +83,9 @@ namespace bank
                     SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
                     SqlCommand cmd1 = new SqlCommand("SELECT Member_CheckingTotal FROM Members WHERE Member_Username = '" + username + "'", db);
                     SqlCommand cmd2 = new SqlCommand("SELECT Member_SavingTotal FROM Members WHERE Member_Username = '" + username + "'", db);
+                                                                   
 
+                    
                     db.Open();
                     SqlDataReader rd = cmd1.ExecuteReader();
                     if (rd.Read())
@@ -95,6 +106,18 @@ namespace bank
                         newBalanceChecking = checkingAmount + amount;
                         newBalanceSaving = savingsAmount - amount;
 
+                        SqlCommand cmd3 = new SqlCommand("UPDATE [Members] SET Member_CheckingTotal = '" + newBalanceChecking + "'," + " Member_SavingTotal = '" + newBalanceSaving + "'  WHERE Member_Username = '" + username + "'", db);
+
+                        try
+                        {
+                            cmd3.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            transferFailedLabel.Visible = true;
+                        }
+
+
                         checkingLabel.Text = "$" + newBalanceChecking.ToString();
                         savingsLabel.Text = "$" + newBalanceSaving.ToString();
 
@@ -102,10 +125,7 @@ namespace bank
                         db.Close();
 
                     }
-                    else
-                    {
-                        // invalidUserLabel.Visible = true;
-                    }
+                   
 
                 }
                 //transfer to savings from checking
@@ -132,23 +152,19 @@ namespace bank
 
                         newBalanceChecking = checkingAmount - amount;
                         newBalanceSaving = savingsAmount + amount;
+                        SqlCommand cmd3 = new SqlCommand("UPDATE [Members] SET Member_CheckingTotal = '" + newBalanceChecking + "'," + " Member_SavingTotal = '" + newBalanceSaving + "'  WHERE Member_Username = '" + username + "'", db);
 
+                        cmd3.ExecuteNonQuery();
                         checkingLabel.Text = "$" + newBalanceChecking.ToString();
                         savingsLabel.Text = "$" + newBalanceSaving.ToString();
 
                         db.Close();
 
                     }
-                    else
-                    {
-                        // invalidUserLabel.Visible = true;
-                    }
+                    
 
                 }
-                else
-                {
-                    //failed
-                }
+              
             }
         }
     }

@@ -9,11 +9,17 @@ using System.Data.SqlClient;
 
 namespace bank
 {
-    public partial class homePage : System.Web.UI.Page
+    public partial class adminLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             invalidUserLabel.Visible = false;
+        }
+
+        protected void adminButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/homePage.aspx");
+                
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -22,7 +28,7 @@ namespace bank
             string value2 = passwordBox.Text;
 
             SqlConnection db = new SqlConnection(SqlDataSource1.ConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Members WHERE Member_Username = '" + value1 + "'AND Member_Password = '" + value2 +"'", db);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Admin WHERE Admin_AdminUsername = '" + value1 + "'AND Admin_AdminPassword = '" + value2 + "'", db);
 
             db.Open();
             SqlDataReader rd = cmd.ExecuteReader();
@@ -30,20 +36,13 @@ namespace bank
             if (rd.Read())
             {
                 Session["username"] = usernameBox.Text;
-                
-                Response.Redirect("/memberAccount.aspx");
+
+                Response.Redirect("/adminPage.aspx");
             }
             else
             {
                 invalidUserLabel.Visible = true;
             }
         }
-
-        protected void adminButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/adminLogin.aspx");
-        }
-
-       
     }
 }
