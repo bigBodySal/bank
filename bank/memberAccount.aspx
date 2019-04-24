@@ -26,7 +26,7 @@
 <body>
     <form id="form1" runat="server" class="auto-style2">
     <ul class = "nav">
-	<li><a href = "homePage.aspx">Home</a></li>
+	<li><a href = "homePage.aspx">Signout</a></li>
 	<li><a href = "about.aspx">About</a></li>
 	<li><a href = "Careers.aspx">Careers</a></li>
 	<li><a href = "contact.aspx">Contact</a></li>

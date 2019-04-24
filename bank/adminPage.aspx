@@ -29,7 +29,7 @@
 <body>
     <form id="form1" runat="server">
     <ul class = "nav">
-	<li><a href = "homePage.aspx">Home</a></li>
+	<li><a href = "homePage.aspx">Signout</a></li>
 	<li><a href = "about.aspx">About</a></li>
 	<li><a href = "Careers.aspx">Careers</a></li>
 	<li><a href = "contact.aspx">Contact</a></li>
@@ -43,7 +43,7 @@
             <asp:Label ID="Label2" runat="server" Text="Users:" Font-Size="Large" ForeColor="#666666"></asp:Label>
             &nbsp;
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Member_ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CssClass="auto-style2" ShowFooter="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Member_ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CssClass="auto-style2" ShowFooter="True" PageSize="5"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField HeaderText="Member_ID" SortExpression="Member_ID">
                         <EditItemTemplate>

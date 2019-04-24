@@ -14,6 +14,7 @@ namespace bank
         protected void Page_Load(object sender, EventArgs e)
         {
             invalidUserLabel.Visible = false;
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace bank
                 Session["username"] = usernameBox.Text;
                 
                 Response.Redirect("/memberAccount.aspx");
+              
             }
             else
             {
@@ -42,8 +44,12 @@ namespace bank
         protected void adminButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/adminLogin.aspx");
+
+
+            
+
         }
 
-       
+        
     }
 }
