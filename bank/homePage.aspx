@@ -56,7 +56,7 @@
         <div class="auto-style1" style="margin: 20px; padding: 50px; background-color: #FFFFFF; ">
             <asp:Label ID="Label1" runat="server" Font-Names="Century Gothic" Font-Size="XX-Large" ForeColor="#666666" Text="The Bank"></asp:Label>
             <br />
-            <asp:Label ID="Label2" runat="server" Text="The Bank is the best place for all your online banking needs. Our representatives are standing by to assist you every step of the way! Please login or sign up to become a member today!" Font-Size="Large" ForeColor="#666666"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="The Bank is the best place for all your online banking needs. Our representatives are standing by to assist you every step of the way! Please login to access and manage your account today!" Font-Size="Large" ForeColor="#666666"></asp:Label>
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

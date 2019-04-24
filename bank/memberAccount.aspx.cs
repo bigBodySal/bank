@@ -68,6 +68,7 @@ namespace bank
             {
                 //success
 
+               
 
                 //if both lists contain same account name display message to user
                 if ((value1 == "SAVINGS" && value2 == "SAVINGS") || (value1 == "CHECKING" && value2 == "CHECKING"))
@@ -103,27 +104,35 @@ namespace bank
 
                         rds.Close();
 
-                        newBalanceChecking = checkingAmount + amount;
-                        newBalanceSaving = savingsAmount - amount;
-
-                        SqlCommand cmd3 = new SqlCommand("UPDATE [Members] SET Member_CheckingTotal = '" + newBalanceChecking + "'," + " Member_SavingTotal = '" + newBalanceSaving + "'  WHERE Member_Username = '" + username + "'", db);
-
-                        try
-                        {
-                            cmd3.ExecuteNonQuery();
-                        }
-                        catch
+                        if (amount > savingsAmount)
                         {
                             transferFailedLabel.Visible = true;
+                            transferFailedLabel.Text = "Insufficient Funds";
+
                         }
+                        else
+                        {
+                            newBalanceChecking = checkingAmount + amount;
+                            newBalanceSaving = savingsAmount - amount;
+
+                            SqlCommand cmd3 = new SqlCommand("UPDATE [Members] SET Member_CheckingTotal = '" + newBalanceChecking + "'," + " Member_SavingTotal = '" + newBalanceSaving + "'  WHERE Member_Username = '" + username + "'", db);
+
+                            try
+                            {
+                                cmd3.ExecuteNonQuery();
+                            }
+                            catch
+                            {
+                                transferFailedLabel.Visible = true;
+                            }
 
 
-                        checkingLabel.Text = "$" + newBalanceChecking.ToString();
-                        savingsLabel.Text = "$" + newBalanceSaving.ToString();
+                            checkingLabel.Text = "$" + newBalanceChecking.ToString();
+                            savingsLabel.Text = "$" + newBalanceSaving.ToString();
 
 
-                        db.Close();
-
+                            db.Close();
+                        }
                     }
                    
 
@@ -150,6 +159,14 @@ namespace bank
 
                         rds.Close();
 
+                        if (amount > checkingAmount)
+                        {
+                            transferFailedLabel.Visible = true;
+                            transferFailedLabel.Text = "Insufficient Funds";
+
+                        }
+                        else { 
+
                         newBalanceChecking = checkingAmount - amount;
                         newBalanceSaving = savingsAmount + amount;
                         SqlCommand cmd3 = new SqlCommand("UPDATE [Members] SET Member_CheckingTotal = '" + newBalanceChecking + "'," + " Member_SavingTotal = '" + newBalanceSaving + "'  WHERE Member_Username = '" + username + "'", db);
@@ -159,7 +176,7 @@ namespace bank
                         savingsLabel.Text = "$" + newBalanceSaving.ToString();
 
                         db.Close();
-
+                        }
                     }
                     
 
